@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "ReconOutput")
-public class ReconOutput {
+public class ReconOutput_Backup {
 
 	@Id
 	private ObjectId id;
@@ -28,33 +28,42 @@ public class ReconOutput {
 	@Field(value = "recon_time")
 	private Date reconTime;
 
-	@Field(value = "keys")
-	private String key;
+	@Field(value = "column_difference")
+	private List<String> columnDiff;
 
+	@Field(value = "missing_mx2")
+	private List<String> missingMx2;
+
+	@Field(value = "missing_mx3")
+	private List<String> missingMx3;
+
+	@Field(value = "keys")
+	private List<String> keys;
+
+	@Field(value = "headers")
+	private List<String> headers;
+	
 	@Field(value = "rows")
 	private List<String> rows;
 
-	public ReconOutput() {
-		super();
+	public ReconOutput_Backup() {
+
 	}
 
-	public ReconOutput(String reportId, String reportName, String reportingDate, Date reconTime,
-			String key, List<String> rows) {
+	public ReconOutput_Backup(String reportId, String reportName, String reportingDate, Date reconTime,
+			List<String> columnDiff, List<String> missingMx2, List<String> missingMx3, List<String> keys,
+			List<String> headers, List<String> rows) {
 		super();
 		this.reportId = reportId;
 		this.reportName = reportName;
 		this.reportingDate = reportingDate;
 		this.reconTime = reconTime;
-		this.key = key;
+		this.columnDiff = columnDiff;
+		this.missingMx2 = missingMx2;
+		this.missingMx3 = missingMx3;
+		this.keys = keys;
+		this.headers = headers;
 		this.rows = rows;
-	}
-
-	public ObjectId getId() {
-		return id;
-	}
-
-	public void setId(ObjectId id) {
-		this.id = id;
 	}
 
 	public String getReportId() {
@@ -89,12 +98,44 @@ public class ReconOutput {
 		this.reconTime = reconTime;
 	}
 
-	public String getKey() {
-		return key;
+	public List<String> getColumnDiff() {
+		return columnDiff;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setColumnDiff(List<String> columnDiff) {
+		this.columnDiff = columnDiff;
+	}
+
+	public List<String> getMissingMx2() {
+		return missingMx2;
+	}
+
+	public void setMissingMx2(List<String> missingMx2) {
+		this.missingMx2 = missingMx2;
+	}
+
+	public List<String> getMissingMx3() {
+		return missingMx3;
+	}
+
+	public void setMissingMx3(List<String> missingMx3) {
+		this.missingMx3 = missingMx3;
+	}
+
+	public List<String> getKeys() {
+		return keys;
+	}
+
+	public void setKeys(List<String> keys) {
+		this.keys = keys;
+	}
+
+	public List<String> getHeaders() {
+		return headers;
+	}
+
+	public void setHeaders(List<String> headers) {
+		this.headers = headers;
 	}
 
 	public List<String> getRows() {

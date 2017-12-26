@@ -5,12 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import ups.mongo.configuration.SpringMongoConfig;
 import ups.mongo.fileprocess.MongoDataUtil;
 import ups.mongo.model.ReconInputMx2;
+import ups.mongo.model.ReconOutput;
 import ups.mongo.service.AutoTagService;
 import ups.mongo.service.ClusterOutputService;
 import ups.mongo.service.ReconInputServiceMx2;
@@ -46,6 +44,10 @@ public class App {
 		System.out.println(mx2.getReportingDate());
 		//ReconOutputService outService = MongoDataUtil.getReconOutputService();				
 		//System.out.println(outService.getByReportId("FXD10"));
+		
+		ReconOutputService ros = MongoDataUtil.getReconOutputService();
+		System.out.println(ros.getByReportId("R320").get(0).getReconTime());
+		
 		
 	}
 }
